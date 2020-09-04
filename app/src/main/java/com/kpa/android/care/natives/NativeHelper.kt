@@ -18,6 +18,7 @@ class NativeHelper @Inject constructor() {
             System.loadLibrary("avfilter-6")
             System.loadLibrary("swscale-4")
             System.loadLibrary("avformat-57")
+            System.loadLibrary("avdevice-57")
         }
     }
     external fun getAppKey(): String
