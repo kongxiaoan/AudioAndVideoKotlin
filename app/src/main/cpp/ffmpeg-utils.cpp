@@ -92,6 +92,16 @@ Java_com_kpa_android_care_natives_NativeHelper_decodeAudio(JNIEnv
 ) {
     const char *src = env->GetStringUTFChars(_src, 0);
     const char *out = env->GetStringUTFChars(_out, 0);
+    char info[1000] = {0};
+    // 获取ffmpeg 配置信息
+    LOGE("ffmpeg config info ----> %s\t", avcodec_configuration())
+    /**
+     * Protocol: FFmpeg类库支持的协议
+AVFormat: FFmpeg类库支持的封装格式
+AVCodec: FFmpeg类库支持的编解码器
+AVFilter: FFmpeg类库支持的滤镜
+Configure: FFmpeg类库的配置信息
+     */
     if (src && *src == '\0') {
         LOGE("操作文件为空 %s", !src)
         return;
@@ -129,11 +139,18 @@ Java_com_kpa_android_care_natives_NativeHelper_decodeAudio(JNIEnv
     AVCodecContext *codec_ctx = avcodec_alloc_context3(NULL);
     avcodec_parameters_to_context(codec_ctx, _context->streams[audio_strem_index]->codecpar);
     AVCodec *codec = avcodec_find_decoder(codec_ctx->codec_id);
+    LOGI("codec  ----> ", codec)
     //打开解码器
     if (avcodec_open2(codec_ctx, codec, NULL) < 0) {
-//        LOGE("could not open codec");
+        LOGE("could not open codec");
         return;
     }
+    // 获取完音视频解码器信息之后 需要分配出解码之后的数据所存放的内存空间，以及进行格式转换需要用到的对象。
+    SwrContext *swrContext = NULL;
+    if (codec_ctx->sample_fmt != AV_SAMPLE_FMT_S16) {
+        LOGI("smaple_fmt =%s");
+    }
+
     //分配AVPacket和AVFrame内存，用于接收音频数据，解码数据
     AVPacket *packet = av_packet_alloc();
     AVFrame *frame = av_frame_alloc();
@@ -170,7 +187,7 @@ Java_com_kpa_android_care_natives_NativeHelper_decodeAudio(JNIEnv
                 break;
             }
             if (got_frame > 0) {
-                LOGI("decode frame:%d", index++);
+//                LOGI("decode frame:%d", index++);
                 if (index == 1000) {//模拟动态修改音量
                     init_volume_filter(&graph, &in_ctx, &out_ctx, "1.0");
                 }

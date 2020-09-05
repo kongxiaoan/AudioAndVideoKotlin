@@ -1,6 +1,7 @@
 package com.kpa.android
 
-import android.app.Application
+import androidx.multidex.MultiDex
+import androidx.multidex.MultiDexApplication
 import com.kpa.android.care.di.ApplicationComponent
 import com.kpa.android.care.di.DaggerApplicationComponent
 
@@ -8,7 +9,7 @@ import com.kpa.android.care.di.DaggerApplicationComponent
  *    author : kpa
  *    e-mail : billkp@yeah.net
  */
-class AVApplication : Application() {
+class AVApplication : MultiDexApplication() {
 
     val appComponent: ApplicationComponent by lazy {
         DaggerApplicationComponent.builder()
@@ -18,5 +19,6 @@ class AVApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         appComponent.inject(this)
+        MultiDex.install(this)
     }
 }
