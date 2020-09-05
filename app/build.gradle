@@ -3,13 +3,12 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion 28
 
     defaultConfig {
         applicationId "com.kpa.android"
-        minSdkVersion 21
-        targetSdkVersion 29
+        minSdkVersion 14
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -18,9 +17,7 @@ android {
                 cppFlags "-std=c++11"
             }
             ndk {
-                ldLibs "log"
                 abiFilters "armeabi-v7a"
-                ldLibs.addAll(['android', 'log'])
             }
         }
     }
@@ -33,7 +30,7 @@ android {
     }
     externalNativeBuild {
         cmake {
-            path "src/main/cpp/CMakeLists.txt"
+            path "CMakeLists.txt"
             version "3.10.2"
         }
     }
@@ -41,11 +38,11 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    sourceSets {
-        main {
-            jniLibs.srcDirs = ['jniLibs']
-        }
-    }
+//    sourceSets {
+//        main {
+//            jniLibs.srcDirs = ['jniLibs']
+//        }
+//    }
 }
 
 dependencies {

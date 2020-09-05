@@ -13,5 +13,4 @@ import javax.inject.Singleton
 class MainViewModel @Inject constructor() : BaseViewModel() {
     @Inject
     lateinit var nativeHelper: NativeHelper
-    fun load() = nativeHelper.getAppKey()
 }
