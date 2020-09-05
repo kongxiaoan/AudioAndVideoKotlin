@@ -19,7 +19,10 @@ class NativeHelper @Inject constructor() {
             System.loadLibrary("swscale-4")
             System.loadLibrary("avformat-57")
             System.loadLibrary("avdevice-57")
+            System.loadLibrary("ffmpeg-utils")
         }
     }
+
     external fun getAppKey(): String
+    external fun decodeAudio(src: String, out: String)
 }

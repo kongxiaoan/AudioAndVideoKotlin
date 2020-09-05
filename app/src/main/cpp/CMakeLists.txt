@@ -4,6 +4,9 @@
 # Sets the minimum version of CMake required to build the native library.
 
 cmake_minimum_required(VERSION 3.4.1)
+if (ANDROID)
+    list(APPEND LINK_LIB_LIST log)
+endif ()
 # 支持gnu++11
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
 # 1. 定义so库和头文件所在目录，方面后面使用
@@ -70,7 +73,13 @@ set_target_properties(avdevice-57
 add_library(
         mp3-encoder-lib
         SHARED
-        mp3-encoder-lib.cpp
+        mp3-encoder-libs.cpp
+)
+
+add_library(
+        ffmpeg-utils
+        SHARED
+        ffmpeg-utils.cpp
 )
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by
@@ -84,7 +93,10 @@ find_library( # Sets the name of the path variable.
         # Specifies the name of the NDK library that
         # you want CMake to locate.
         log)
-
+find_library(
+        android-lib
+        android
+)
 # Specifies libraries CMake should link to your target library. You
 # can link multiple libraries, such as libraries you define in this
 # build script, prebuilt third-party libraries, or system libraries.
@@ -98,6 +110,9 @@ target_link_libraries( # Specifies the target library.
         swscale-4
         avformat-57
         avdevice-57
+        ffmpeg-utils
         # Links the target library to the log library
         # included in the NDK.
-        ${log-lib})
+        ${log-lib}
+        ${android-lib}
+        )

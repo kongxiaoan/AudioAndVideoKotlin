@@ -1,8 +1,10 @@
 package com.kpa.android
 
+import com.kpa.android.care.natives.NativeHelper
 import org.junit.Test
 
 import org.junit.Assert.*
+import javax.inject.Inject
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -14,4 +16,6 @@ class ExampleUnitTest {
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
     }
+
+
 }

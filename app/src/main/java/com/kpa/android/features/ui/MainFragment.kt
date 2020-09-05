@@ -35,5 +35,6 @@ class MainFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         jniShowTv.text = nativeHelper.getAppKey()
+        nativeHelper.decodeAudio("", "")
     }
 }
