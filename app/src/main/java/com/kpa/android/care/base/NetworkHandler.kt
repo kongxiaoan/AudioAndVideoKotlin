@@ -18,7 +18,7 @@
 package com.kpa.imagekotlindemo.core.base
 
 import android.content.Context
-import com.kpa.android.care.exception.networkInfo
+import com.kpa.android.care.extension.networkInfo
 import javax.inject.Inject
 import javax.inject.Singleton
 

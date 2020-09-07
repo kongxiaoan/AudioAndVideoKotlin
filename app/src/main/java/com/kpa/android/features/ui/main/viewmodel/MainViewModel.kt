@@ -1,4 +1,4 @@
-package com.kpa.android.features.ui.viewmodel
+package com.kpa.android.features.ui.main.viewmodel
 
 import com.kpa.android.care.natives.NativeHelper
 import com.kpa.imagekotlindemo.core.base.BaseViewModel

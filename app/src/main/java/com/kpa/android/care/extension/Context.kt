@@ -15,9 +15,13 @@
  *
  */
 
-package com.kpa.android.care.exception
+package com.kpa.android.care.extension
 
+import android.app.admin.DevicePolicyManager
 import android.content.Context
+import android.content.pm.PackageManager
+import android.hardware.Camera
+import android.hardware.Camera.getNumberOfCameras
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 
@@ -28,3 +32,13 @@ import android.net.NetworkInfo
 val Context.networkInfo: NetworkInfo?
     get() =
         (this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager).activeNetworkInfo
+
+// =======================两种判断方式 start=========================
+val Context.isCamera: Boolean
+    get() =
+        !(this.getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager).getCameraDisabled(
+            null
+        ) && (getNumberOfCameras() != 0)
+val Context.hasACamera: Boolean
+    get() = this.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA)
+// =======================两种判断方式 end=========================

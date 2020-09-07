@@ -1,6 +1,7 @@
 package com.kpa.android
 
 import com.kpa.android.care.natives.NativeHelper
+import com.kpa.android.features.ui.simple_camera.SimpleCameraActivity
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -15,6 +16,11 @@ class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
+    }
+    @Test
+    fun testCamera() {
+        val simpleCameraActivity = SimpleCameraActivity()
+        simpleCameraActivity.createImageFile()
     }
 
 

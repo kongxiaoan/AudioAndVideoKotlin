@@ -1,4 +1,4 @@
-package com.kpa.android.features.ui
+package com.kpa.android.features.ui.main
 
 import android.os.Bundle
 import android.os.Environment
@@ -7,6 +7,7 @@ import com.kpa.android.care.base.BaseActivity
 import com.yanzhenjie.permission.AndPermission
 import com.yanzhenjie.permission.runtime.Permission
 import java.io.File
+import kotlin.concurrent.thread
 
 class MainActivity : BaseActivity() {
     override fun fragment() = MainFragment()
@@ -15,8 +16,11 @@ class MainActivity : BaseActivity() {
         AndPermission.with(this)
             .runtime()
             .permission(Permission.Group.STORAGE)
+            .permission(Permission.Group.CAMERA)
             .onGranted {
-                copyFromAssetcFiles()
+                thread {
+                    copyFromAssetcFiles()
+                }
             }.start()
     }
 

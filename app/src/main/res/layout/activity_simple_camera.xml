@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".features.ui.simple_camera.SimpleCameraActivity">
 
-    <Button
-        android:id="@+id/cameraSimple"
+    <ImageView
+        android:id="@+id/cameraIv"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Camera简单使用"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/startCamera"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/videoCollect"
+        android:id="@+id/startCamera"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="视频采集"
-        app:layout_constraintTop_toBottomOf="@id/cameraSimple" />
-
+        android:text="打开相机"
+        app:layout_constraintBottom_toTopOf="@id/saveBitmap" />
     <Button
-        android:id="@+id/recordCollect"
+        android:id="@+id/saveBitmap"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="原生录制视频"
-        app:layout_constraintTop_toBottomOf="@id/videoCollect" />
+        android:text="指定路径"
+        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

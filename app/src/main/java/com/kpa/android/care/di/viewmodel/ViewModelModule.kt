@@ -2,7 +2,7 @@ package com.kpa.android.care.di.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.kpa.android.features.ui.viewmodel.MainViewModel
+import com.kpa.android.features.ui.main.viewmodel.MainViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--    路径组件对应于 getExternalFilesDir() 返回的路径（在调用 Environment.DIRECTORY_PICTURES 时）
+    。请务必将 com.example.package.name 替换为应用的实际软件包名称-->
+    <external-files-path
+        name="my_images"
+        path="." />
+</paths>

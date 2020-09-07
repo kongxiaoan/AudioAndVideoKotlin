@@ -2,7 +2,7 @@ package com.kpa.android.care.di
 
 import com.kpa.android.AVApplication
 import com.kpa.android.care.di.viewmodel.ViewModelModule
-import com.kpa.android.features.ui.MainFragment
+import com.kpa.android.features.ui.main.MainFragment
 import dagger.Component
 import javax.inject.Singleton
 
