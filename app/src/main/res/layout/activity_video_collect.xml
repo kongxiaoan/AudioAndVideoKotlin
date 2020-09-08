@@ -10,14 +10,33 @@
         android:id="@+id/cameraPreview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/cameraButton"
+        app:layout_constraintBottom_toTopOf="@id/cameraCL"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/cameraButton"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cameraCL"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="拍照"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent">
 
+        <Button
+            android:id="@+id/startCamera"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:text="开始录制"
+            app:layout_constraintEnd_toStartOf="@id/endCamera"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/endCamera"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:text="开始录制"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@id/startCamera"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

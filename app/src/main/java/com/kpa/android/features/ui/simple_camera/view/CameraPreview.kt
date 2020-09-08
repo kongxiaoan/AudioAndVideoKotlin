@@ -1,4 +1,4 @@
-package com.kpa.android.features.ui.video_collect.view
+package com.kpa.android.features.ui.simple_camera.view
 
 import android.content.Context
 import android.hardware.Camera
@@ -44,13 +44,19 @@ class CameraPreview(context: Context, private val mCamera: Camera) : SurfaceView
     override fun surfaceCreated(holder: SurfaceHolder) {
         mCamera.apply {
             try {
-                // 2. 使用Camera.setPreviewDisplay 将SurfaceView 连接到相机以准备实时相机图像预览
                 setPreviewDisplay(holder)
-                // 3. 开始预览 显示实时相机图像
                 startPreview()
             } catch (e: IOException) {
                 LogUtils.e("Error setting camera preview: ${e.message}")
             }
         }
+    }
+
+    private fun startPreview() {
+
+    }
+
+    private fun setPreviewDisplay(holder: SurfaceHolder) {
+
     }
 }

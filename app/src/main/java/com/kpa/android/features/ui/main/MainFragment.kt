@@ -9,6 +9,7 @@ import com.kpa.android.care.extension.hasACamera
 import com.kpa.android.care.extension.isCamera
 import com.kpa.android.care.natives.NativeHelper
 import com.kpa.android.features.ui.main.viewmodel.MainViewModel
+import com.kpa.android.features.ui.simple_camera.ControllerCameraActivity
 import com.kpa.android.features.ui.simple_camera.SimpleCameraActivity
 import com.kpa.android.features.ui.simple_camera.SimpleVideoActivity
 import com.kpa.android.features.ui.video_collect.VideoCollectActivity
@@ -67,6 +68,15 @@ class MainFragment : BaseFragment() {
             context?.let {
                 if (it.hasACamera) {
                     VideoCollectActivity.callingIntent(it)
+                } else {
+                    ToastUtils.showLong("相机不可用")
+                }
+            }
+        }
+        controllerCamera.setOnClickListener {
+            context?.let {
+                if (it.hasACamera) {
+                    ControllerCameraActivity.callingIntent(it)
                 } else {
                     ToastUtils.showLong("相机不可用")
                 }

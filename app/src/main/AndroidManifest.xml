@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".features.ui.simple_camera.SimpleVideoActivity"></activity>
+        <activity android:name=".features.ui.simple_camera.ControllerCameraActivity"></activity>
+        <activity android:name=".features.ui.simple_camera.SimpleVideoActivity" />
         <activity android:name=".features.ui.simple_camera.SimpleCameraActivity" />
         <activity android:name=".features.ui.video_collect.VideoCollectActivity" />
         <activity android:name=".features.ui.main.MainActivity">
@@ -33,7 +34,7 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"></meta-data>
+                android:resource="@xml/file_paths" />
         </provider>
     </application>
 
