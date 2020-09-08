@@ -34,7 +34,7 @@ class SimpleCameraActivity : AppCompatActivity() {
         bindEvent()
     }
 
-    //    @Throws(IOException::class)
+    @Throws(IOException::class)
     fun createImageFile(): File {
         val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
         val externalFilesDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
